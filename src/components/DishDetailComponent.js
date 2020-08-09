@@ -40,7 +40,7 @@ class DishDetail extends Component{
                         <div key={com.id}>
                             <ul className="list-unstyled">
                                 <li>{com.comment} Rating: {com.rating}</li>
-                                <li>--{com.author}, {com.date}</li>
+                                <li>--{com.author}, {new Intl.DateTimeFormat('en-GB', {year:'numeric', month:'short', day:'2-digit'}).format(new Date(Date.parse(com.date)))}</li>
                             </ul>
                         </div>
                     );
@@ -72,9 +72,11 @@ class DishDetail extends Component{
 
     render(){
         return(
-            <div className="row">
-                {this.renderDish(this.props.selectedDish)}
-                {this.renderComments(this.props.selectedDish)}
+            <div class="container">
+                <div className="row">
+                    {this.renderDish(this.props.selectedDish)}
+                    {this.renderComments(this.props.selectedDish)}
+                </div>
             </div>
         );       
     }
